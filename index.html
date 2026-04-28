@@ -14,7 +14,7 @@
   </head>
   <body>
     <main class="page">
-      <section class="hero">
+      <section class="hero no-print">
         <div>
           <p class="hero-tag" id="heroTag">SHANHAI HUB AUTO EXPORT</p>
           <h1 id="title">SHANHAI HUB Quote Calculator</h1>
@@ -30,7 +30,7 @@
       </section>
 
       <section class="layout">
-        <article class="panel form-panel">
+        <article class="panel form-panel no-print">
           <h2 id="formTitle">车辆与成本信息</h2>
           <div class="grid">
             <div class="field full">
@@ -55,7 +55,11 @@
 
             <div class="field">
               <label id="labelDestination" for="destinationCity">目的城市 / Город назначения</label>
-              <input id="destinationCity" type="text" placeholder="Алматы" />
+              <select id="destinationCity">
+                <option value="Moscow">Moscow</option>
+                <option value="Almaty">Almaty</option>
+                <option value="Minsk">Minsk</option>
+              </select>
             </div>
 
             <div class="field">
@@ -91,6 +95,8 @@
 
           <div class="actions">
             <button id="calculateBtn" type="button">计算报价 / Рассчитать</button>
+            <button id="generateBtn" type="button" class="secondary">Generate customer quote</button>
+            <button id="printBtn" type="button" class="ghost">Print quote</button>
             <p class="note" id="footerNote">Send model / budget / destination city for a full quote.</p>
           </div>
         </article>
@@ -98,14 +104,28 @@
         <aside class="panel preview-panel">
           <h2 id="previewTitle">SHANHAI HUB Quote Preview</h2>
 
-          <div class="totals">
-            <div class="total-item">
-              <span id="totalRubLabel">总价（RUB）</span>
-              <strong id="finalRub">₽ 0.00</strong>
+          <div class="quote-card" id="quoteCard">
+            <div class="quote-card-header">
+              <strong>SHANHAI HUB</strong>
+              <span id="quoteCity">Moscow</span>
             </div>
-            <div class="total-item">
-              <span id="totalUsdLabel">总价（USD）</span>
-              <strong id="finalUsd">$ 0.00</strong>
+
+            <div class="quote-info-grid">
+              <div><span id="cardModelLabel">Model</span><b id="cardModelValue">-</b></div>
+              <div><span id="cardYearLabel">Year</span><b id="cardYearValue">-</b></div>
+              <div><span id="cardMileageLabel">Mileage</span><b id="cardMileageValue">-</b></div>
+              <div><span id="cardColorLabel">Color</span><b id="cardColorValue">-</b></div>
+            </div>
+
+            <div class="totals">
+              <div class="total-item">
+                <span id="totalRubLabel">总价（RUB）</span>
+                <strong id="finalRub">₽ 0.00</strong>
+              </div>
+              <div class="total-item">
+                <span id="totalUsdLabel">总价（USD）</span>
+                <strong id="finalUsd">$ 0.00</strong>
+              </div>
             </div>
           </div>
 

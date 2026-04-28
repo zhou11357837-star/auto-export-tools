@@ -1,13 +1,13 @@
 :root {
-  --bg: #f2f5fb;
+  --bg: #eff3fb;
   --surface: #ffffff;
-  --line: #dde5f1;
-  --text: #102239;
-  --muted: #5d6d84;
-  --brand-700: #103b68;
-  --brand-500: #1f629e;
-  --brand-100: #ecf5ff;
-  --ok: #0a8c62;
+  --line: #d8e2f0;
+  --text: #0f233d;
+  --muted: #5d7088;
+  --brand-700: #113b67;
+  --brand-500: #226eaf;
+  --brand-100: #edf5ff;
+  --ok: #0b8f67;
 }
 
 * {
@@ -17,38 +17,37 @@
 body {
   margin: 0;
   font-family: "Inter", "PingFang SC", "Microsoft YaHei", sans-serif;
-  background: radial-gradient(circle at top, #f8fbff, var(--bg) 40%);
   color: var(--text);
+  background: radial-gradient(circle at 15% 0%, #fafdff, var(--bg) 48%);
 }
 
 .page {
-  max-width: 1200px;
-  margin: 28px auto;
-  padding: 0 18px 28px;
+  max-width: 1220px;
+  margin: 30px auto;
+  padding: 0 18px 30px;
 }
 
 .hero {
   display: flex;
   justify-content: space-between;
-  gap: 20px;
-  align-items: flex-start;
-  background: linear-gradient(130deg, var(--brand-700), var(--brand-500));
+  gap: 24px;
   color: #fff;
-  border-radius: 16px;
-  padding: 26px 28px;
-  box-shadow: 0 14px 32px rgba(16, 59, 104, 0.2);
+  padding: 26px 30px;
+  border-radius: 18px;
+  background: linear-gradient(130deg, #0f355a, #236daf);
+  box-shadow: 0 14px 30px rgba(15, 55, 91, 0.25);
 }
 
 .hero-tag {
   margin: 0;
   font-size: 12px;
-  letter-spacing: 0.14em;
-  opacity: 0.86;
+  letter-spacing: 0.15em;
+  opacity: 0.88;
 }
 
 .hero h1 {
   margin: 8px 0;
-  font-size: 30px;
+  font-size: 31px;
 }
 
 .hero p {
@@ -57,43 +56,42 @@ body {
 }
 
 .language-wrap {
+  min-width: 230px;
   display: flex;
   flex-direction: column;
   gap: 8px;
-  min-width: 240px;
 }
 
 .language-wrap label {
   font-size: 13px;
-  opacity: 0.9;
 }
 
-select,
 input,
+select,
 textarea,
 button {
   font: inherit;
 }
 
-select,
 input,
+select,
 textarea {
-  border-radius: 10px;
   border: 1px solid var(--line);
+  border-radius: 10px;
   padding: 11px 12px;
 }
 
-select:focus,
 input:focus,
+select:focus,
 textarea:focus {
-  outline: 2px solid rgba(31, 98, 158, 0.25);
+  outline: 2px solid rgba(34, 110, 175, 0.25);
   border-color: var(--brand-500);
 }
 
 .layout {
   margin-top: 18px;
   display: grid;
-  grid-template-columns: minmax(0, 1.35fr) minmax(320px, 1fr);
+  grid-template-columns: minmax(0, 1.36fr) minmax(340px, 1fr);
   gap: 18px;
 }
 
@@ -101,13 +99,12 @@ textarea:focus {
   background: var(--surface);
   border: 1px solid var(--line);
   border-radius: 14px;
-  box-shadow: 0 8px 22px rgba(25, 48, 80, 0.07);
+  box-shadow: 0 8px 20px rgba(24, 51, 84, 0.07);
   padding: 20px;
 }
 
 .panel h2 {
   margin: 0 0 16px;
-  font-size: 20px;
 }
 
 .grid {
@@ -129,58 +126,105 @@ textarea:focus {
 .field label {
   color: var(--muted);
   font-size: 13px;
-  line-height: 1.3;
+  line-height: 1.35;
 }
 
 .actions {
   margin-top: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
 }
 
 button {
-  background: var(--brand-700);
-  color: #fff;
   border: 0;
   border-radius: 10px;
-  padding: 12px 18px;
-  font-weight: 600;
+  padding: 11px 16px;
   cursor: pointer;
+  font-weight: 600;
 }
 
-button:hover {
-  background: #0d3259;
+#calculateBtn {
+  background: var(--brand-700);
+  color: #fff;
+}
+
+#generateBtn.secondary {
+  background: var(--brand-500);
+  color: #fff;
+}
+
+#printBtn.ghost {
+  background: #eef4fb;
+  color: var(--brand-700);
 }
 
 .note {
-  margin: 12px 0 0;
-  color: var(--muted);
+  margin: 0;
+  width: 100%;
   font-size: 13px;
-}
-
-.preview-panel {
-  display: flex;
-  flex-direction: column;
+  color: var(--muted);
 }
 
 .preview-panel h2 {
-  padding: 12px;
-  border-radius: 10px;
-  background: var(--brand-100);
   color: var(--brand-700);
+  background: var(--brand-100);
+  border-radius: 10px;
+  padding: 11px 12px;
+}
+
+.quote-card {
+  border: 1px solid var(--line);
+  background: linear-gradient(180deg, #ffffff, #f8fbff);
+  border-radius: 12px;
+  padding: 14px;
+  margin-bottom: 14px;
+}
+
+.quote-card-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  color: var(--brand-700);
+}
+
+.quote-info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.quote-info-grid div {
+  padding: 9px;
+  border-radius: 8px;
+  background: #ffffff;
+  border: 1px solid #e8eef8;
+}
+
+.quote-info-grid span {
+  display: block;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.quote-info-grid b {
+  font-size: 14px;
 }
 
 .totals {
   display: grid;
   gap: 10px;
-  margin-bottom: 14px;
 }
 
 .total-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   border: 1px solid var(--line);
   border-radius: 10px;
-  padding: 12px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  padding: 10px 12px;
 }
 
 .total-item span {
@@ -189,43 +233,79 @@ button:hover {
 }
 
 .total-item strong {
-  font-size: 18px;
   color: var(--ok);
+  font-size: 18px;
 }
 
 #summaryLabel {
-  color: var(--muted);
-  font-size: 13px;
+  display: block;
   margin-bottom: 8px;
+  font-size: 13px;
+  color: var(--muted);
 }
 
 #quoteSummary {
-  min-height: 360px;
+  width: 100%;
+  min-height: 250px;
   resize: vertical;
-  background: #fcfdff;
 }
 
-@media (max-width: 980px) {
+@media (max-width: 1020px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+
   .hero {
     flex-direction: column;
   }
 
   .language-wrap {
     min-width: auto;
-    width: 100%;
-  }
-
-  .layout {
-    grid-template-columns: 1fr;
   }
 }
 
-@media (max-width: 640px) {
-  .grid {
+@media (max-width: 660px) {
+  .grid,
+  .quote-info-grid {
     grid-template-columns: 1fr;
   }
 
   .hero h1 {
     font-size: 24px;
+  }
+}
+
+@media print {
+  body {
+    background: #fff;
+  }
+
+  .no-print,
+  #summaryLabel {
+    display: none !important;
+  }
+
+  .page {
+    margin: 0;
+    padding: 0;
+    max-width: none;
+  }
+
+  .layout {
+    display: block;
+    margin-top: 0;
+  }
+
+  .preview-panel {
+    border: none;
+    box-shadow: none;
+    padding: 0;
+  }
+
+  .quote-card,
+  #quoteSummary {
+    border: 1px solid #cfd9e8;
+    box-shadow: none;
+    background: #fff;
   }
 }
