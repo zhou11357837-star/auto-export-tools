@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SHANHAI HUB Quote Calculator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="page">
+      <section class="hero">
+        <div>
+          <p class="hero-tag" id="heroTag">SHANHAI HUB AUTO EXPORT</p>
+          <h1 id="title">SHANHAI HUB Quote Calculator</h1>
+          <p id="subtitle">汽车出口专业报价工具 / Профессиональный калькулятор экспорта авто</p>
+        </div>
+        <div class="language-wrap">
+          <label for="languageSelect" id="langLabel">界面语言 / Язык интерфейса</label>
+          <select id="languageSelect" aria-label="Language selector">
+            <option value="zh">中文</option>
+            <option value="ru">Русский</option>
+          </select>
+        </div>
+      </section>
+
+      <section class="layout">
+        <article class="panel form-panel">
+          <h2 id="formTitle">车辆与成本信息</h2>
+          <div class="grid">
+            <div class="field full">
+              <label id="labelModel" for="carModel">车型 / Модель</label>
+              <input id="carModel" type="text" placeholder="Toyota Camry" />
+            </div>
+
+            <div class="field">
+              <label id="labelYear" for="carYear">年份 / Год</label>
+              <input id="carYear" type="number" placeholder="2022" />
+            </div>
+
+            <div class="field">
+              <label id="labelMileage" for="mileage">里程（km）/ Пробег (km)</label>
+              <input id="mileage" type="number" placeholder="32000" />
+            </div>
+
+            <div class="field">
+              <label id="labelColor" for="color">颜色 / Цвет</label>
+              <input id="color" type="text" placeholder="Black" />
+            </div>
+
+            <div class="field">
+              <label id="labelDestination" for="destinationCity">目的城市 / Город назначения</label>
+              <input id="destinationCity" type="text" placeholder="Алматы" />
+            </div>
+
+            <div class="field">
+              <label id="labelCarPrice" for="carPriceUsd">车价（USD）/ Цена авто (USD)</label>
+              <input id="carPriceUsd" type="number" step="0.01" placeholder="15000" />
+            </div>
+
+            <div class="field">
+              <label id="labelFreight" for="freightUsd">运费（USD）/ Фрахт (USD)</label>
+              <input id="freightUsd" type="number" step="0.01" placeholder="1800" />
+            </div>
+
+            <div class="field">
+              <label id="labelProfit" for="profitUsd">利润（USD）/ Маржа (USD)</label>
+              <input id="profitUsd" type="number" step="0.01" placeholder="1200" />
+            </div>
+
+            <div class="field">
+              <label id="labelClearance" for="clearanceRub">清关费（RUB）/ Оформление (RUB)</label>
+              <input id="clearanceRub" type="number" step="0.01" placeholder="220000" />
+            </div>
+
+            <div class="field">
+              <label id="labelTax" for="taxRub">税费（RUB）/ Налог (RUB)</label>
+              <input id="taxRub" type="number" step="0.01" placeholder="450000" />
+            </div>
+
+            <div class="field">
+              <label id="labelRate" for="exchangeRate">汇率 USD→RUB / Курс USD→RUB</label>
+              <input id="exchangeRate" type="number" step="0.0001" placeholder="93.50" />
+            </div>
+          </div>
+
+          <div class="actions">
+            <button id="calculateBtn" type="button">计算报价 / Рассчитать</button>
+            <p class="note" id="footerNote">Send model / budget / destination city for a full quote.</p>
+          </div>
+        </article>
+
+        <aside class="panel preview-panel">
+          <h2 id="previewTitle">SHANHAI HUB Quote Preview</h2>
+
+          <div class="totals">
+            <div class="total-item">
+              <span id="totalRubLabel">总价（RUB）</span>
+              <strong id="finalRub">₽ 0.00</strong>
+            </div>
+            <div class="total-item">
+              <span id="totalUsdLabel">总价（USD）</span>
+              <strong id="finalUsd">$ 0.00</strong>
+            </div>
+          </div>
+
+          <label id="summaryLabel" for="quoteSummary">客户报价摘要 / Текст для клиента</label>
+          <textarea id="quoteSummary" readonly></textarea>
+        </aside>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
