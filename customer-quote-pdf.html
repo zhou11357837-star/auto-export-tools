@@ -1,0 +1,154 @@
+﻿<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SHANHAI HUB PDF Quotation</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="customer-print-page pdf-output-page">
+    <main class="pdf-sheet">
+      <section class="pdf-header">
+        <div class="pdf-brand">
+          <div class="logo-symbol pdf-logo">
+            <img id="logoImage" class="logo-image" alt="SHANHAI HUB logo" hidden />
+            <span class="logo-route"></span>
+            <strong id="logoInitials">SH</strong>
+          </div>
+          <div>
+            <span id="logoTagline">Auto Export China</span>
+            <h1 id="logoName">SHANHAI HUB</h1>
+          </div>
+        </div>
+        <div class="pdf-meta">
+          <div>
+            <span data-i18n="quoteRefLabel">鎶ヤ环缂栧彿</span>
+            <strong id="quoteNumber">SHH-QT-000000-001</strong>
+          </div>
+          <div>
+            <span data-i18n="dateLabel">鏃ユ湡</span>
+            <strong id="quoteDate">--</strong>
+          </div>
+        </div>
+      </section>
+
+      <section class="pdf-title">
+        <span data-i18n="singleVehicleTitle">鍗曡溅璇︽儏鍗</span>
+        <h2 id="previewModelZh">理想 L7 Max</h2>
+        <p id="previewModelRu">Lixiang L7 Max</p>
+        <strong id="previewTrim">Max</strong>
+        <p id="previewDestination">浜や粯鍩庡競: Moscow</p>
+      </section>
+
+      <section class="pdf-image-block">
+        <div class="main-vehicle-image">
+          <img id="mainVehicleImageImg" alt="Vehicle preview" hidden />
+          <div class="image-placeholder" id="imagePlaceholder">
+            <strong>SHANHAI HUB</strong>
+            <span data-i18n="imagePlaceholderText">鏆傛棤杞﹁締鍥剧墖</span>
+          </div>
+        </div>
+        <div class="quote-image-grid" id="quoteImageGrid" aria-label="Vehicle image gallery"></div>
+        <div class="thumbnail-strip" id="thumbnailStrip" hidden></div>
+      </section>
+
+      <section class="pdf-spec-card">
+        <div><span data-i18n="modelLabel">杞﹀瀷</span><strong id="specModel">理想 L7 Max</strong></div>
+        <div><span data-i18n="yearLabel">骞翠唤</span><strong id="specYear">2024</strong></div>
+        <div><span data-i18n="mileageLabel">閲岀▼ km</span><strong id="specMileage">12,000 km</strong></div>
+        <div><span data-i18n="engineLabel">鍙戝姩鏈</span><strong id="specEngine">1.5L</strong></div>
+        <div><span data-i18n="transmissionLabel">鍙橀€熺</span><strong id="specTransmission">CVT</strong></div>
+        <div><span data-i18n="colorLabel">棰滆壊</span><strong id="specColor">Black</strong></div>
+        <div><span data-i18n="horsepowerLabel">椹姏</span><strong id="specHorsepower">154 hp</strong></div>
+        <div><span data-i18n="statusLabel">杞﹁締鐘舵€</span><strong id="specStatus">Available</strong></div>
+      </section>
+
+      <section class="pdf-total">
+        <span data-i18n="grandTotalLabel">鎬昏垂鐢</span>
+        <strong id="totalRub">0 RUB</strong>
+        <em id="totalUsdHero">0 USD</em>
+      </section>
+
+      <section class="pdf-price-grid">
+        <div><span data-i18n="carPriceLabel">杞﹁締浠锋牸 USD</span><strong id="priceCar">0 USD</strong></div>
+        <div><span data-i18n="freightLabel">鐗╂祦璐圭敤 USD</span><strong id="priceFreight">0 USD</strong></div>
+        <div><span data-i18n="clientProfitLabel">采购与出口服务 USD</span><strong id="priceProfit">0 USD</strong></div>
+        <div><span data-i18n="clearanceLabel">娓呭叧璐圭敤 RUB</span><strong id="priceClearance">0 RUB</strong></div>
+        <div><span data-i18n="customsDutyLabel">Customs duty RUB</span><strong id="priceCustomsDuty">0 RUB</strong></div>
+        <div><span data-i18n="recyclingFeeLabel">Utilization fee RUB</span><strong id="priceRecyclingFee">0 RUB</strong></div>
+        <div><span data-i18n="taxLabel">绋庤垂 RUB</span><strong id="priceTax">0 RUB</strong></div>
+        <div><span data-i18n="estimatedTaxTotalLabel">Estimated tax total RUB</span><strong id="priceEstimatedTaxTotal">0 RUB</strong></div>
+        <div><span data-i18n="rateLabel">姹囩巼</span><strong id="ratePreview">74.8081</strong></div>
+        <div class="wide"><span data-i18n="totalUsdLabel">鎬讳环 USD</span><strong id="totalUsd">0 USD</strong></div>
+        <div class="wide"><span data-i18n="rubCostsLabel">RUB 鎴愭湰</span><strong id="rubSubtotal">0 RUB</strong></div>
+        <div class="wide"><span data-i18n="usdCostsLabel">USD 鎴愭湰</span><strong id="usdSubtotal">0 USD</strong></div>
+        <div class="wide strong"><span data-i18n="grandTotalLabel">鎬昏垂鐢</span><strong id="priceGrandTotal">0 RUB</strong></div>
+        <div class="wide strong"><span data-i18n="finalLandedCostLabel">Final landed cost RUB</span><strong id="priceFinalLandedCost">0 RUB</strong></div>
+      </section>
+
+      <section class="pdf-note">
+        <div>
+          <strong data-i18n="sellingPointsTitle">鏍稿績鍗栫偣</strong>
+          <p id="sellingPointsText">杞﹀喌娓呮櫚锛岄厤缃畬鏁达紝閫傚悎鍑哄彛浜や粯銆傛姤浠峰寘鍚噰璐€佺墿娴併€佹竻鍏冲拰鏈嶅姟鎵ц銆</p>
+        </div>
+        <div>
+          <strong data-i18n="noteTitle">鎶ヤ环璇存槑</strong>
+          <p id="noteText">鎶ヤ环涓洪浼伴噾棰濓紝鏈€缁堜环鏍间互杞﹁締纭銆佹眹鐜囥€佽繍杈撹矾绾垮強娓呭叧瑕佹眰涓哄噯銆</p>
+          <p id="validityText">报价有效期：24小时，最终价格以车辆确认、汇率、运输路线及清关条件为准。</p>
+        </div>
+      </section>
+
+      <footer class="pdf-footer">
+        <span>SHANHAI HUB</span>
+        <strong data-i18n="footerText">涓浗姹借溅閲囪喘涓庡嚭鍙ｆ墽琛</strong>
+      </footer>
+    </main>
+
+    <div class="pdf-data-fields" aria-hidden="true">
+      <input id="model" value="Lixiang L7 Max" />
+      <input id="modelZh" value="理想 L7 Max" />
+      <input id="modelRu" value="Lixiang L7 Max" />
+      <input id="trim" value="Max" />
+      <input id="year" value="2024" />
+      <input id="mileage" value="12000" />
+      <input id="color" value="黑色 / Black / Черный" />
+      <input id="engine" value="1.5L" />
+      <input id="transmission" value="CVT" />
+      <input id="horsepower" value="154 hp" />
+      <select id="status"></select>
+      <select id="destination">
+        <option value="Moscow">Moscow / 莫斯科 / Москва</option>
+        <option value="Almaty">Almaty / 阿拉木图 / Алматы</option>
+        <option value="Minsk">Minsk / 明斯克 / Минск</option>
+      </select>
+      <input id="carPriceUsd" value="32000" />
+      <input id="freightUsd" value="2600" />
+      <input id="clearanceRub" value="420000" />
+      <input id="taxRub" value="980000" />
+      <select id="taxMode"><option value="manual">manual</option><option value="ruPersonalUse">ruPersonalUse</option></select>
+      <input id="vehicleAgeYears" value="2" />
+      <input id="engineDisplacementCc" value="1500" />
+      <select id="personalUse"><option value="yes">yes</option><option value="no">no</option></select>
+      <input id="customsDutyRub" value="0" />
+      <input id="recyclingFeeRub" value="0" />
+      <input id="estimatedTaxTotalRub" value="0" />
+      <input id="finalLandedCostRub" value="0" />
+      <input id="profitUsd" value="1500" />
+      <input id="exchangeRate" value="74.8081" />
+      <input id="sourcePageUrl" value="" />
+      <input class="vehicle-image-url" data-image-index="0" />
+      <input class="vehicle-image-url" data-image-index="1" />
+      <input class="vehicle-image-url" data-image-index="2" />
+      <input class="vehicle-image-url" data-image-index="3" />
+      <input class="vehicle-image-url" data-image-index="4" />
+    </div>
+
+    <span id="miniLogoText" hidden>SH</span>
+    <script src="app.js"></script>
+  </body>
+</html>
+
+
+
+
+

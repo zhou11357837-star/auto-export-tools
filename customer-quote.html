@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>SHANHAI HUB Vehicle Quotation</title>
+    <title>SHANHAI HUB Customer Quotation</title>
     <link rel="stylesheet" href="styles.css" />
   </head>
-  <body>
+  <body class="customer-print-page">
     <main class="page-shell">
       <header class="brand-header">
         <div class="brand-identity">
@@ -39,7 +39,7 @@
           <strong data-i18n="systemTitle">涓浗姹借溅閲囪喘涓庡嚭鍙ｆ姤浠风郴缁</strong>
           <p data-i18n="systemText">鐢ㄤ簬瀹㈡埛杞﹁締閲囪喘銆佸嚭鍙ｆ墽琛屻€佺墿娴佷笌浜や粯鐨勪笓涓氭姤浠枫€</p>
           <div class="quote-actions">
-            <button type="button" class="action-button" id="openCustomerQuote" data-i18n="openCustomerQuoteLabel">鏌ョ湅瀹㈡埛鎶ヤ环鍗?/button>
+            <button type="button" class="action-button" id="printQuote" data-i18n="printQuoteLabel">鎵撳嵃 / 瀵煎嚭 PDF</button>
           </div>
         </div>
       </header>
@@ -349,11 +349,6 @@
 
           <div class="total-box">
             <span data-i18n="grandTotalLabel">鎬昏垂鐢</span>
-            <select class="currency-switch" id="displayCurrency" aria-label="Display currency">
-              <option value="RUB">RUB</option>
-              <option value="USD">USD</option>
-              <option value="CNY">CNY</option>
-            </select>
             <strong id="totalRub">0 RUB</strong>
             <em id="totalUsdHero">0 USD</em>
           </div>
