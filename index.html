@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>SHANHAI HUB Vehicle Quotation</title>
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="styles.css?v=20260604-noapprox1" />
   </head>
   <body>
     <main class="page-shell">
@@ -23,23 +23,24 @@
           </div>
 
           <div class="brand-copy-block">
-            <p class="eyebrow" data-i18n="eyebrow">涓浗姹借溅鍑哄彛鎶ヤ环</p>
+            <p class="eyebrow" data-i18n="eyebrow">中国汽车出口报价</p>
             <h1>SHANHAI HUB</h1>
-            <p class="brand-subtitle" data-i18n="subtitle">鎮ㄥ湪涓浗鐨勯噰璐笌鍑哄彛鎵ц鍥㈤槦</p>
+            <p class="brand-subtitle" data-i18n="subtitle">您在中国的采购与出口执行团队</p>
           </div>
         </div>
 
         <div class="header-card">
           <div class="language-switcher" aria-label="Language">
-            <button type="button" class="language-button active" data-lang="zh">涓枃</button>
+            <button type="button" class="language-button active" data-lang="zh">中文</button>
             <button type="button" class="language-button" data-lang="ru">RU</button>
             <button type="button" class="language-button" data-lang="en">EN</button>
           </div>
-          <span data-i18n="systemLabel">鎶ヤ环绯荤粺</span>
-          <strong data-i18n="systemTitle">涓浗姹借溅閲囪喘涓庡嚭鍙ｆ姤浠风郴缁</strong>
-          <p data-i18n="systemText">鐢ㄤ簬瀹㈡埛杞﹁締閲囪喘銆佸嚭鍙ｆ墽琛屻€佺墿娴佷笌浜や粯鐨勪笓涓氭姤浠枫€</p>
+          <span data-i18n="systemLabel">报价系统</span>
+          <strong data-i18n="systemTitle">中国汽车采购与出口报价系统</strong>
+          <p data-i18n="systemText">用于客户车辆采购、出口执行、物流与交付的专业报价。</p>
           <div class="quote-actions">
-            <button type="button" class="action-button" id="openCustomerQuote" data-i18n="openCustomerQuoteLabel">鏌ョ湅瀹㈡埛鎶ヤ环鍗?/button>
+            <button type="button" class="action-button" id="openCustomerQuote" data-i18n="openCustomerQuoteLabel">查看客户报价单</button>
+            <button type="button" class="action-button secondary-action-button" id="newQuote" data-i18n="newQuoteLabel">新建报价</button>
           </div>
         </div>
       </header>
@@ -49,8 +50,17 @@
           <div class="section-title">
             <span>01</span>
             <div>
-              <h2 data-i18n="vehicleSectionTitle">杞﹁締淇℃伅</h2>
-              <p data-i18n="vehicleSectionHelp">鐢ㄤ簬瀹㈡埛鎶ヤ环鍗曠殑杞﹁締鍩虹淇℃伅銆</p>
+              <h2 data-i18n="vehicleSectionTitle">车辆信息</h2>
+              <p data-i18n="vehicleSectionHelp">用于客户报价单的车辆基础信息。</p>
+            </div>
+          </div>
+
+          <div class="vehicle-type-toggle">
+            <span data-i18n="vehicleQuoteTypeLabel">报价类型</span>
+            <input id="vehicleQuoteType" type="hidden" value="new" />
+            <div>
+              <button type="button" class="vehicle-type-button active" data-vehicle-type="new" data-i18n="newVehicleQuoteLabel">新车报价</button>
+              <button type="button" class="vehicle-type-button" data-vehicle-type="used" data-i18n="usedVehicleQuoteLabel">二手车报价</button>
             </div>
           </div>
 
@@ -66,69 +76,75 @@
             </label>
 
             <label>
-              <span data-i18n="yearLabel">骞翠唤</span>
+              <span data-i18n="yearLabel">年份</span>
               <input id="year" type="number" value="2024" min="1990" max="2035" />
             </label>
 
             <label>
-              <span data-i18n="mileageLabel">閲岀▼ km</span>
+              <span data-i18n="mileageLabel">里程 km</span>
               <input id="mileage" type="number" value="12000" min="0" step="100" />
             </label>
 
             <label>
-              <span data-i18n="colorLabel">棰滆壊</span>
+              <span data-i18n="colorLabel">颜色</span>
               <input id="color" type="text" value="黑色 / Black / Черный" autocomplete="off" />
             </label>
 
             <label>
-              <span data-i18n="engineLabel">鍙戝姩鏈</span>
+              <span data-i18n="engineLabel">发动机</span>
               <input id="engine" type="text" value="1.5L" autocomplete="off" />
             </label>
 
             <label>
-              <span data-i18n="transmissionLabel">鍙橀€熺</span>
+              <span data-i18n="transmissionLabel">变速箱</span>
               <input id="transmission" type="text" value="CVT" autocomplete="off" />
             </label>
 
             <label>
-              <span data-i18n="horsepowerLabel">椹姏</span>
+              <span data-i18n="horsepowerLabel">马力</span>
               <input id="horsepower" type="text" value="154 hp" autocomplete="off" />
             </label>
 
             <label>
-              <span data-i18n="statusLabel">杞﹁締鐘舵€</span>
+              <span data-i18n="statusLabel">车辆状态</span>
               <select id="status"></select>
             </label>
 
             <label>
-              <span data-i18n="destinationLabel">浜や粯鍩庡競</span>
-              <select id="destination">
-                <option value="Moscow">Moscow / 莫斯科 / Москва</option>
-                <option value="Almaty">Almaty / 阿拉木图 / Алматы</option>
-                <option value="Minsk">Minsk / 明斯克 / Минск</option>
-              </select>
+              <span data-i18n="destinationLabel">交付城市</span>
+              <input id="destination" list="destinationOptions" value="莫斯科 / Москва" autocomplete="off" />
+              <datalist id="destinationOptions"></datalist>
+            </label>
+
+            <label>
+              <span data-i18n="emissionStandardLabel">环保标准</span>
+              <input id="emissionStandard" type="text" value="China 5" autocomplete="off" />
+            </label>
+
+            <label>
+              <span data-i18n="fuelTypeLabel">燃油类型</span>
+              <input id="fuelType" type="text" value="增程混动 / Range extender hybrid" list="fuelTypeOptions" autocomplete="off" />
+              <datalist id="fuelTypeOptions">
+                <option value="汽油 / Petrol"></option>
+                <option value="柴油 / Diesel"></option>
+                <option value="混动 / Hybrid"></option>
+                <option value="插电混动 / Plug-in hybrid"></option>
+                <option value="增程混动 / Range extender hybrid"></option>
+                <option value="纯电 / EV"></option>
+              </datalist>
             </label>
           </div>
 
-          <div class="auto-model-preview">
-            <strong data-i18n="autoModelPreviewTitle">自动识别结果</strong>
+          <div class="vehicle-condition-field used-vehicle-only">
             <div>
-              <span data-i18n="autoModelZhLabel">中文</span>
-              <b id="autoModelZh">理想 L7</b>
+              <strong data-i18n="conditionDescriptionLabel">车况描述</strong>
+              <span data-i18n="conditionDescriptionHelp">用于二手车客户报价中的车况说明。</span>
             </div>
-            <div>
-              <span data-i18n="autoModelEnLabel">英文</span>
-              <b id="autoModelEn">Li Auto L7</b>
-            </div>
-            <div>
-              <span data-i18n="autoModelRuLabel">俄文</span>
-              <b id="autoModelRu">Li Auto L7</b>
-            </div>
-            <div>
-              <span data-i18n="autoModelTrimLabel">配置</span>
-              <b id="autoModelTrim">Max</b>
-            </div>
-            <p id="autoModelStatus" data-i18n="autoModelMatchedText">已匹配车型字典</p>
+            <label class="condition-grade-select">
+              <span data-i18n="conditionGradeLabel">车况等级</span>
+              <select id="conditionGrade"></select>
+            </label>
+            <textarea id="conditionDescription" rows="3" data-i18n-placeholder="conditionDescriptionPlaceholder" placeholder="二手车可填写：外观、内饰、事故/补漆、保养记录、检测结论等。" autocomplete="off"></textarea>
           </div>
 
           <div class="auto-model-fields" id="manualModelFallback" hidden>
@@ -145,110 +161,189 @@
           <div class="section-title">
             <span>02</span>
             <div>
-              <h2 data-i18n="imageSectionTitle">杞﹁締鍥剧墖</h2>
-              <p data-i18n="imageSectionHelp">鍙矘璐村浘鐗囬摼鎺ワ紝鎴栦笂浼犳湰鍦板浘鐗囬瑙堛€</p>
+              <h2 data-i18n="imageSectionTitle">车辆图片</h2>
+              <p data-i18n="imageSectionHelp">可粘贴图片链接，或上传本地图片预览。</p>
             </div>
           </div>
 
           <div class="image-editor">
-            <label>
-              <span data-i18n="sourcePageLabel">鍥剧墖鏉ユ簮缃戦〉 URL</span>
-              <input id="sourcePageUrl" type="url" placeholder="https://example.com/vehicle-page" autocomplete="off" />
-            </label>
-
-            <div class="image-input-grid">
+            <div class="image-input-grid primary-image-grid">
               <label>
-                <span data-i18n="mainImageUrlLabel">涓诲浘 URL</span>
+                <span data-i18n="mainImageUrlLabel">主图 URL</span>
                 <input class="vehicle-image-url" data-image-index="0" type="url" placeholder="./vehicle-main.jpg" autocomplete="off" />
               </label>
               <label>
-                <span data-i18n="imageUploadLabel">鏈湴涓婁紶</span>
+                <span data-i18n="imageUploadLabel">本地上传</span>
                 <input class="vehicle-image-file" data-image-index="0" type="file" accept="image/*" />
               </label>
+            </div>
+
+            <details class="advanced-panel image-advanced-panel">
+              <summary>
+                <span data-i18n="imageAdvancedTitle">更多图片和来源</span>
+                <small data-i18n="imageAdvancedHelp">需要展示多图或记录来源时再展开。</small>
+              </summary>
+
+              <div class="image-input-grid advanced-image-grid">
+                <label class="wide-field">
+                  <span data-i18n="sourcePageLabel">图片来源网页 URL</span>
+                  <input id="sourcePageUrl" type="url" placeholder="https://example.com/vehicle-page" autocomplete="off" />
+                </label>
+
               <label>
-                <span data-i18n="thumbnailUrlLabel">缂╃暐鍥?1 URL</span>
+                <span data-i18n="thumbnailUrlLabel">缩略图 1 URL</span>
                 <input class="vehicle-image-url" data-image-index="1" type="url" placeholder="./vehicle-1.jpg" autocomplete="off" />
               </label>
               <label>
-                <span data-i18n="imageUploadLabel">鏈湴涓婁紶</span>
+                <span data-i18n="imageUploadLabel">本地上传</span>
                 <input class="vehicle-image-file" data-image-index="1" type="file" accept="image/*" />
               </label>
               <label>
-                <span data-i18n="thumbnailUrlLabel">缂╃暐鍥?2 URL</span>
+                <span data-i18n="thumbnailUrlLabel">缩略图 2 URL</span>
                 <input class="vehicle-image-url" data-image-index="2" type="url" placeholder="./vehicle-2.jpg" autocomplete="off" />
               </label>
               <label>
-                <span data-i18n="imageUploadLabel">鏈湴涓婁紶</span>
+                <span data-i18n="imageUploadLabel">本地上传</span>
                 <input class="vehicle-image-file" data-image-index="2" type="file" accept="image/*" />
               </label>
               <label>
-                <span data-i18n="thumbnailUrlLabel">缂╃暐鍥?3 URL</span>
+                <span data-i18n="thumbnailUrlLabel">缩略图 3 URL</span>
                 <input class="vehicle-image-url" data-image-index="3" type="url" placeholder="./vehicle-3.jpg" autocomplete="off" />
               </label>
               <label>
-                <span data-i18n="imageUploadLabel">鏈湴涓婁紶</span>
+                <span data-i18n="imageUploadLabel">本地上传</span>
                 <input class="vehicle-image-file" data-image-index="3" type="file" accept="image/*" />
               </label>
               <label>
-                <span data-i18n="thumbnailUrlLabel">缂╃暐鍥?4 URL</span>
+                <span data-i18n="thumbnailUrlLabel">缩略图 4 URL</span>
                 <input class="vehicle-image-url" data-image-index="4" type="url" placeholder="./vehicle-4.jpg" autocomplete="off" />
               </label>
               <label>
-                <span data-i18n="imageUploadLabel">鏈湴涓婁紶</span>
+                <span data-i18n="imageUploadLabel">本地上传</span>
                 <input class="vehicle-image-file" data-image-index="4" type="file" accept="image/*" />
               </label>
-            </div>
+              </div>
+            </details>
           </div>
 
           <div class="section-title">
             <span>03</span>
             <div>
-              <h2 data-i18n="costSectionTitle">鎶ヤ环鎴愭湰</h2>
-              <p data-i18n="costSectionHelp">閫夋嫨鍩庡競鍚庤嚜鍔ㄥ甫鍏ュ弬鑰冭垂鐢紝鎵€鏈夐噾棰濆潎鍙墜鍔ㄨ皟鏁淬€</p>
+              <h2 data-i18n="costSectionTitle">报价成本</h2>
+              <p data-i18n="costSectionHelp">选择城市后自动带入参考费用，所有金额均可手动调整。</p>
             </div>
           </div>
 
-          <div class="form-grid">
-            <label>
-              <span data-i18n="carPriceLabel">杞﹁締浠锋牸 USD</span>
-              <input id="carPriceUsd" type="number" value="32000" min="0" step="100" />
+          <div class="form-grid cost-grid">
+            <div class="cost-currency-toggle">
+              <span data-i18n="costCurrencyLabel">报价录入币种</span>
+              <input id="quoteCostCurrency" type="hidden" value="CNY" />
+              <div>
+                <button type="button" class="cost-currency-button active" data-cost-currency="CNY">CNY</button>
+                <button type="button" class="cost-currency-button" data-cost-currency="USD">USD</button>
+                <button type="button" class="cost-currency-button" data-cost-currency="RUB">RUB</button>
+              </div>
+            </div>
+
+            <div class="quote-term-toggle" aria-label="Quote term">
+              <input id="includeTaxInTotal" type="checkbox" hidden />
+              <input id="quoteTerm" type="hidden" value="cip" />
+              <button type="button" class="quote-term-button" data-quote-term="fob">FOB</button>
+              <button type="button" class="quote-term-button active" data-quote-term="cip">CIP</button>
+              <button type="button" class="quote-term-button" data-quote-term="ddp">DDP</button>
+            </div>
+
+            <div class="exchange-rate-panel">
+              <div>
+                <span data-i18n="exchangeRateLabel">汇率（默认实时，可手工修改）</span>
+                <strong id="liveRateSummary">CNY-RUB / CNY-USD</strong>
+                <small id="rateMeta" class="rate-meta">手工汇率</small>
+              </div>
+              <div class="rate-inputs">
+                <label>
+                  <span data-i18n="usdRubRateLabel">人民币兑卢布</span>
+                  <input id="exchangeRate" type="number" value="10.3326" min="0.0001" step="0.0001" />
+                </label>
+                <label>
+                  <span data-i18n="usdCnyRateLabel">人民币兑美元</span>
+                  <input id="exchangeRateCny" type="number" value="0.138122" min="0.000001" step="0.000001" />
+                </label>
+              </div>
+            </div>
+
+            <label class="primary-cost-field">
+              <span data-i18n="carPriceLabel">车辆价格</span>
+              <input id="carPriceUsd" type="number" value="" min="0" step="100" />
             </label>
 
-            <label>
-              <span data-i18n="freightLabel">鐗╂祦璐圭敤 USD</span>
-              <input id="freightUsd" type="number" value="2600" min="0" step="50" />
+            <label class="primary-cost-field">
+              <span data-i18n="chinaLogisticsLabel">国内物流费用</span>
+              <input id="chinaLogisticsUsd" type="number" value="" min="0" step="50" />
             </label>
 
-            <label>
-              <span data-i18n="clearanceLabel">娓呭叧璐圭敤 RUB</span>
-              <input id="clearanceRub" type="number" value="420000" min="0" step="1000" />
+            <label class="primary-cost-field">
+              <span data-i18n="exportProcessingLabel">出口手续费</span>
+              <input id="exportProcessingUsd" type="number" value="" min="0" step="50" />
             </label>
 
-            <label>
-              <span data-i18n="taxLabel">绋庤垂 RUB</span>
-              <input id="taxRub" type="number" value="980000" min="0" step="1000" />
+            <label class="primary-cost-field">
+              <span data-i18n="freightLabel">国际物流费用</span>
+              <input id="freightUsd" type="number" value="" min="0" step="50" />
             </label>
 
+            <label class="primary-cost-field">
+              <span data-i18n="profitLabel">服务费用</span>
+              <input id="profitUsd" type="number" value="" min="0" step="50" />
+            </label>
+
+            <div class="customs-tax-panel">
+              <strong data-i18n="taxEstimateDetailsTitle">预估税费明细</strong>
+              <div class="customs-tax-grid">
+                <label>
+                  <span data-i18n="clearanceLabel">清关服务费</span>
+                  <input id="clearanceRub" type="number" value="" min="0" step="1000" />
+                </label>
+
+                <label>
+                  <span data-i18n="taxLabel">税费</span>
+                  <input id="taxRub" type="number" value="" min="0" step="1000" />
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <details class="advanced-panel">
+            <summary>
+              <span data-i18n="advancedTaxTitle">高级税费 / TKS 校验</span>
+              <small data-i18n="advancedTaxHelp">需要核对俄罗斯个人进口税费时再展开。</small>
+            </summary>
+
+            <div class="form-grid advanced-grid">
             <label>
-              <span data-i18n="taxModeLabel">绋庤垂妯″紡</span>
+              <span data-i18n="taxModeLabel">税费模式</span>
               <select id="taxMode">
                 <option value="manual" data-i18n="taxModeManual">手动输入</option>
                 <option value="ruPersonalUse" data-i18n="taxModePersonal">俄罗斯个人购买（personal use）</option>
               </select>
             </label>
 
+            <div class="tool-row">
+              <button type="button" class="secondary-tool-button" id="openTksCalculator" data-i18n="openTksCalculatorLabel">打开 TKS 官方计算器校验</button>
+              <small id="tksCalculatorHint" data-i18n="tksCalculatorHint">会打开 TKS 页面，并复制当前车辆参数便于粘贴核对。</small>
+            </div>
+
             <label>
-              <span data-i18n="vehicleAgeLabel">杞﹁締骞撮檺</span>
+              <span data-i18n="vehicleAgeLabel">车辆年限</span>
               <input id="vehicleAgeYears" type="number" value="2" min="0" step="0.1" />
             </label>
 
             <label>
-              <span data-i18n="engineDisplacementLabel">鍙戝姩鏈烘帓閲?cc</span>
+              <span data-i18n="engineDisplacementLabel">发动机排量 cc</span>
               <input id="engineDisplacementCc" type="number" value="1500" min="0" step="100" />
             </label>
 
             <label>
-              <span data-i18n="personalUseLabel">涓汉璐拱</span>
+              <span data-i18n="personalUseLabel">个人购买</span>
               <select id="personalUse">
                 <option value="yes">Yes / Да / 是</option>
                 <option value="no">No / Нет / 否</option>
@@ -256,28 +351,18 @@
             </label>
 
             <label>
-              <span data-i18n="profitLabel">鏈嶅姟璐圭敤 USD</span>
-              <input id="profitUsd" type="number" value="1500" min="0" step="50" />
-            </label>
-
-            <label>
-              <span data-i18n="exchangeRateLabel">浠婃棩榛樿姹囩巼 USD-RUB</span>
-              <input id="exchangeRate" type="number" value="74.8081" min="1" step="0.0001" />
-            </label>
-
-            <label>
               <span data-i18n="customsDutyLabel">Customs duty RUB</span>
-              <input id="customsDutyRub" type="text" value="0" readonly />
+              <input id="customsDutyRub" type="text" value="0" />
             </label>
 
             <label>
               <span data-i18n="recyclingFeeLabel">Utilization fee RUB</span>
-              <input id="recyclingFeeRub" type="text" value="0" readonly />
+              <input id="recyclingFeeRub" type="text" value="0" />
             </label>
 
             <label>
               <span data-i18n="estimatedTaxTotalLabel">Estimated tax total RUB</span>
-              <input id="estimatedTaxTotalRub" type="text" value="0" readonly />
+              <input id="estimatedTaxTotalRub" type="text" value="0" />
             </label>
 
             <label>
@@ -285,6 +370,7 @@
               <input id="finalLandedCostRub" type="text" value="0" readonly />
             </label>
           </div>
+          </details>
         </form>
 
         <aside class="quote-card" aria-label="Customer quote preview">
@@ -294,39 +380,57 @@
             </div>
             <div>
               <strong>SHANHAI HUB</strong>
-              <span data-i18n="quoteCardTitle">瀹㈡埛杞﹁締鎶ヤ环</span>
+              <span data-i18n="quoteCardTitle">客户车辆报价</span>
             </div>
           </div>
 
           <div class="quote-meta">
             <div>
-              <span data-i18n="quoteRefLabel">鎶ヤ环缂栧彿</span>
+              <span data-i18n="quoteRefLabel">报价编号</span>
               <strong id="quoteNumber">SHH-QT-000000-001</strong>
             </div>
             <div>
-              <span data-i18n="dateLabel">鏃ユ湡</span>
+              <span data-i18n="dateLabel">日期</span>
               <strong id="quoteDate">--</strong>
             </div>
           </div>
 
+          <section class="client-readiness-bar" aria-label="Commercial quotation scope">
+            <div>
+              <span data-i18n="quoteForLabel">适用客户</span>
+              <strong data-i18n="privateCorporateLabel">个人 / 企业客户</strong>
+            </div>
+            <div>
+              <span data-i18n="quoteTermScopeLabel">贸易条款</span>
+              <strong data-i18n="quoteTermScopeText">FOB / CIP / DDP</strong>
+            </div>
+            <div>
+              <span data-i18n="validityShortLabel">有效期</span>
+              <strong data-i18n="validityShortText">24 小时</strong>
+            </div>
+          </section>
+
           <div class="vehicle-summary">
-            <span class="summary-label" data-i18n="singleVehicleTitle">鍗曡溅璇︽儏鍗</span>
+            <span class="summary-label" data-i18n="singleVehicleTitle">单车详情卡</span>
+            <span class="quote-type-badge" id="previewVehicleQuoteType">新车报价</span>
             <h2 id="previewModelZh">理想 L7 Max</h2>
             <p id="previewModelRu">Lixiang L7 Max</p>
             <strong id="previewTrim">Max</strong>
-            <p id="previewDestination">浜や粯鍩庡競: Moscow</p>
+            <p id="previewDestination">交付城市: Moscow</p>
           </div>
 
           <section class="spec-card">
             <div class="spec-grid">
-              <div><span data-i18n="modelLabel">杞﹀瀷</span><strong id="specModel">理想 L7 Max</strong></div>
-              <div><span data-i18n="yearLabel">骞翠唤</span><strong id="specYear">2024</strong></div>
-              <div><span data-i18n="mileageLabel">閲岀▼ km</span><strong id="specMileage">12,000 km</strong></div>
-              <div><span data-i18n="engineLabel">鍙戝姩鏈</span><strong id="specEngine">1.5L</strong></div>
-              <div><span data-i18n="transmissionLabel">鍙橀€熺</span><strong id="specTransmission">CVT</strong></div>
-              <div><span data-i18n="colorLabel">棰滆壊</span><strong id="specColor">Black</strong></div>
-              <div><span data-i18n="horsepowerLabel">椹姏</span><strong id="specHorsepower">154 hp</strong></div>
-              <div><span data-i18n="statusLabel">杞﹁締鐘舵€</span><strong id="specStatus">Available</strong></div>
+              <div><span data-i18n="modelLabel">车型</span><strong id="specModel">理想 L7 Max</strong></div>
+              <div><span data-i18n="yearLabel">年份</span><strong id="specYear">2024</strong></div>
+              <div><span data-i18n="mileageLabel">里程 km</span><strong id="specMileage">12,000 km</strong></div>
+              <div><span data-i18n="engineLabel">发动机</span><strong id="specEngine">1.5L</strong></div>
+              <div><span data-i18n="transmissionLabel">变速箱</span><strong id="specTransmission">CVT</strong></div>
+              <div><span data-i18n="colorLabel">颜色</span><strong id="specColor">Black</strong></div>
+              <div><span data-i18n="horsepowerLabel">马力</span><strong id="specHorsepower">154 hp</strong></div>
+              <div><span data-i18n="statusLabel">车辆状态</span><strong id="specStatus">Available</strong></div>
+              <div><span data-i18n="emissionStandardLabel">环保标准</span><strong id="specEmissionStandard">China 5</strong></div>
+              <div><span data-i18n="fuelTypeLabel">燃油类型</span><strong id="specFuelType">增程混动</strong></div>
             </div>
           </section>
 
@@ -335,7 +439,7 @@
               <img id="mainVehicleImageImg" alt="Vehicle preview" hidden />
               <div class="image-placeholder" id="imagePlaceholder">
                 <strong>SHANHAI HUB</strong>
-                <span data-i18n="imagePlaceholderText">鏆傛棤杞﹁締鍥剧墖</span>
+                <span data-i18n="imagePlaceholderText">暂无车辆图片</span>
               </div>
             </div>
             <div class="quote-image-grid" id="quoteImageGrid" aria-label="Vehicle image gallery"></div>
@@ -343,69 +447,124 @@
           </div>
 
           <section class="selling-points">
-            <strong data-i18n="sellingPointsTitle">鏍稿績鍗栫偣</strong>
-            <p id="sellingPointsText">杞﹀喌娓呮櫚锛岄厤缃畬鏁达紝閫傚悎鍑哄彛浜や粯銆傛姤浠峰寘鍚噰璐€佺墿娴併€佹竻鍏冲拰鏈嶅姟鎵ц銆</p>
+            <strong data-i18n="sellingPointsTitle">核心卖点</strong>
+            <p id="sellingPointsText">车况清晰，配置完整，适合出口交付。报价包含采购、物流、清关和服务执行。</p>
           </section>
 
-          <div class="total-box">
-            <span data-i18n="grandTotalLabel">鎬昏垂鐢</span>
-            <select class="currency-switch" id="displayCurrency" aria-label="Display currency">
-              <option value="RUB">RUB</option>
-              <option value="USD">USD</option>
-              <option value="CNY">CNY</option>
-            </select>
-            <strong id="totalRub">0 RUB</strong>
-            <em id="totalUsdHero">0 USD</em>
-          </div>
-
-          <section class="price-structure">
-            <strong data-i18n="priceStructureTitle">璐圭敤鏄庣粏</strong>
-            <div class="price-row"><span data-i18n="carPriceLabel">杞﹁締浠锋牸 USD</span><b id="priceCar">0 USD</b></div>
-            <div class="price-row"><span data-i18n="freightLabel">鐗╂祦璐圭敤 USD</span><b id="priceFreight">0 USD</b></div>
-            <div class="price-row"><span data-i18n="clientProfitLabel">采购与出口服务 USD</span><b id="priceProfit">0 USD</b></div>
-            <div class="price-row"><span data-i18n="clearanceLabel">娓呭叧璐圭敤 RUB</span><b id="priceClearance">0 RUB</b></div>
-            <div class="price-row"><span data-i18n="customsDutyLabel">Customs duty RUB</span><b id="priceCustomsDuty">0 RUB</b></div>
-            <div class="price-row"><span data-i18n="recyclingFeeLabel">Utilization fee RUB</span><b id="priceRecyclingFee">0 RUB</b></div>
-            <div class="price-row"><span data-i18n="taxLabel">绋庤垂 RUB</span><b id="priceTax">0 RUB</b></div>
-            <div class="price-row"><span data-i18n="estimatedTaxTotalLabel">Estimated tax total RUB</span><b id="priceEstimatedTaxTotal">0 RUB</b></div>
-            <div class="price-row total"><span data-i18n="grandTotalLabel">鎬昏垂鐢</span><b id="priceGrandTotal">0 RUB</b></div>
-            <div class="price-row total"><span data-i18n="finalLandedCostLabel">Final landed cost RUB</span><b id="priceFinalLandedCost">0 RUB</b></div>
+          <section class="condition-summary used-vehicle-only">
+            <strong data-i18n="conditionDescriptionTitle">车况描述</strong>
+            <div class="condition-grade-preview" id="conditionGradePreview" hidden>
+              <span id="conditionGradeBadge">A</span>
+              <div>
+                <b id="conditionGradeTitle">-</b>
+                <em id="conditionGradeText">-</em>
+              </div>
+            </div>
+            <p id="conditionDescriptionPreview">-</p>
           </section>
 
-          <div class="summary-grid">
-            <div>
-              <span id="selectedTotalLabel" data-i18n="selectedTotalLabel">总价</span>
-              <strong id="totalUsd">0 USD</strong>
+          <section class="price-block cip-price-block">
+            <div class="total-box">
+              <span id="primaryPriceLabel" data-i18n="cipPriceLabel">CIP 到达价</span>
+              <select class="currency-switch display-currency-control" id="displayCurrency" aria-label="Display currency">
+                <option value="USD">USD</option>
+                <option value="RUB">RUB</option>
+                <option value="CNY" selected>CNY</option>
+              </select>
+              <strong id="totalRub">0 RUB</strong>
+              <em id="totalUsdHero" hidden></em>
             </div>
-            <div>
-              <span data-i18n="usdCostsLabel">USD 鎴愭湰</span>
-              <strong id="usdSubtotal">0 USD</strong>
+
+            <strong class="price-block-title" id="primaryDetailsHeading" data-i18n="cipDetailsTitle">CIP 到达价明细</strong>
+            <div class="price-card-grid">
+              <div><span data-i18n="carPriceLabel">车辆价格 USD</span><strong id="priceCar">0 USD</strong></div>
+              <div><span data-i18n="chinaLogisticsLabel">国内物流费用</span><strong id="priceChinaLogistics">0</strong></div>
+              <div><span data-i18n="exportProcessingLabel">出口手续费</span><strong id="priceExportProcessing">0</strong></div>
+              <div class="freight-cost-row"><span data-i18n="freightLabel">国际物流费用 USD</span><strong id="priceFreight">0 USD</strong></div>
+              <div><span data-i18n="clientProfitLabel">采购与出口服务 USD</span><strong id="priceProfit">0 USD</strong></div>
+              <div class="rate-detail-row"><span data-i18n="rateLabel">汇率</span><strong id="ratePreview">CNY-RUB / CNY-USD</strong><small id="rateMetaPreview" class="rate-meta-preview">手工汇率</small></div>
+              <div class="internal-summary-row"><span data-i18n="usdCostsLabel">USD 成本</span><strong id="usdSubtotal">0 USD</strong></div>
+              <div class="cip-support-row internal-summary-row"><span data-i18n="rubCostsLabel">RUB 成本</span><strong id="rubSubtotal">0 RUB</strong></div>
+              <div class="cip-support-row highlight"><span data-i18n="cipPriceLabel">CIP 到达价</span><strong id="priceCipTotal">0 RUB</strong></div>
+              <div class="cip-support-row highlight"><span id="selectedTotalLabel" data-i18n="selectedTotalLabel">总价</span><strong id="totalUsd">0 USD</strong></div>
             </div>
-            <div>
-              <span data-i18n="rubCostsLabel">RUB 鎴愭湰</span>
-              <strong id="rubSubtotal">0 RUB</strong>
+          </section>
+
+          <section class="price-block landed-price-block">
+            <div class="total-box landed-total-content">
+              <span data-i18n="landedPriceLabel">全包落地价</span>
+              <select class="currency-switch display-currency-control" aria-label="Display currency">
+                <option value="CNY" selected>CNY</option>
+                <option value="USD">USD</option>
+                <option value="RUB">RUB</option>
+              </select>
+              <strong id="landedTotalMain">0</strong>
+              <em id="landedTotalSub" hidden></em>
             </div>
-            <div>
-              <span data-i18n="rateLabel">姹囩巼</span>
-              <strong id="ratePreview">74.8081</strong>
+
+            <strong class="price-block-title" id="landedDetailsHeading" data-i18n="landedDetailsTitle">全包落地价明细</strong>
+            <div class="price-card-grid">
+              <div class="landed-only-row"><span data-i18n="carPriceLabel">车辆价格 USD</span><strong id="landedPriceCar">0 USD</strong></div>
+              <div class="landed-only-row"><span data-i18n="chinaLogisticsLabel">国内物流费用</span><strong id="landedPriceChinaLogistics">0</strong></div>
+              <div class="landed-only-row"><span data-i18n="exportProcessingLabel">出口手续费</span><strong id="landedPriceExportProcessing">0</strong></div>
+              <div class="landed-only-row"><span data-i18n="freightLabel">国际物流费用 USD</span><strong id="landedPriceFreight">0 USD</strong></div>
+              <div class="landed-only-row"><span data-i18n="clientProfitLabel">采购与出口服务 USD</span><strong id="landedPriceProfit">0 USD</strong></div>
+              <div class="tax-estimate-row"><span data-i18n="clearanceLabel">清关服务费 RUB</span><strong id="priceClearance">0 RUB</strong></div>
+              <div class="landed-only-row"><span data-i18n="customsDutyLabel">进口关税 RUB</span><strong id="priceCustomsDuty">0 RUB</strong></div>
+              <div class="landed-only-row"><span data-i18n="recyclingFeeLabel">回收费 RUB</span><strong id="priceRecyclingFee">0 RUB</strong></div>
+              <div class="landed-only-row"><span data-i18n="taxLabel">税费 RUB</span><strong id="priceTax">0 RUB</strong></div>
+              <div class="tax-estimate-row highlight"><span data-i18n="estimatedTaxTotalLabel">预估税费合计 RUB</span><strong id="priceEstimatedTaxTotal">0 RUB</strong></div>
+              <div class="landed-only-row highlight"><span data-i18n="landedPriceLabel">全包落地价</span><strong id="priceGrandTotal">0 RUB</strong></div>
+              <div class="landed-only-row highlight"><span data-i18n="finalLandedCostLabel">最终落地成本 RUB</span><strong id="priceFinalLandedCost">0 RUB</strong></div>
             </div>
-          </div>
+          </section>
+
+          <section class="service-scope">
+            <div class="section-kicker">
+              <strong data-i18n="serviceScopeTitle">服务范围</strong>
+              <span data-i18n="serviceScopeSubtitle">为个人和企业客户清晰呈现采购与出口执行边界。</span>
+            </div>
+            <div class="scope-grid">
+              <div>
+                <b>01</b>
+                <strong data-i18n="scopeSourcingTitle">车辆确认</strong>
+                <span data-i18n="scopeSourcingText">车型、配置、图片和车况信息确认</span>
+              </div>
+              <div>
+                <b>02</b>
+                <strong data-i18n="scopeExportTitle">出口文件</strong>
+                <span data-i18n="scopeExportText">中国采购、出口手续与交付资料协调</span>
+              </div>
+              <div>
+                <b>03</b>
+                <strong data-i18n="scopeLogisticsTitle">国际物流</strong>
+                <span data-i18n="scopeLogisticsText">按报价条款安排至指定城市的运输方案</span>
+              </div>
+              <div>
+                <b>04</b>
+                <strong data-i18n="scopeClearanceTitle">清关估算</strong>
+                <span data-i18n="scopeClearanceText">按客户类型和目的地提供税费参考</span>
+              </div>
+            </div>
+          </section>
 
           <div class="quote-note">
-            <strong data-i18n="noteTitle">鎶ヤ环璇存槑</strong>
-            <p id="noteText">鎶ヤ环涓洪浼伴噾棰濓紝鏈€缁堜环鏍间互杞﹁締纭銆佹眹鐜囥€佽繍杈撹矾绾垮強娓呭叧瑕佹眰涓哄噯銆</p>
+            <strong data-i18n="noteTitle">报价说明</strong>
+            <p id="noteText">报价为预估金额，最终价格以车辆确认、汇率、运输路线及清关要求为准。</p>
+            <p id="cipTaxNotice" class="cip-tax-notice">温馨提示：当前为 CIP 到达价，关税、清关及落地费用为预估，最终以实际清关结果为准。</p>
             <p id="validityText">报价有效期：24小时，最终价格以车辆确认、汇率、运输路线及清关条件为准。</p>
           </div>
 
           <footer class="quote-footer">
             <span>SHANHAI HUB</span>
-            <strong data-i18n="footerText">涓浗姹借溅閲囪喘涓庡嚭鍙ｆ墽琛</strong>
+            <strong data-i18n="footerText">中国汽车采购与出口执行</strong>
           </footer>
         </aside>
       </section>
     </main>
 
-    <script src="app.js"></script>
+    <script src="quote-math.js?v=20260604-noapprox1"></script>
+    <script src="app.js?v=20260604-noapprox1"></script>
   </body>
 </html>
 
