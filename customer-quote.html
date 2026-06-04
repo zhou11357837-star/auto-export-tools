@@ -1,0 +1,516 @@
+﻿<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SHANHAI HUB Customer Quotation</title>
+    <link rel="stylesheet" href="styles.css?v=20260604-noapprox1" />
+  </head>
+  <body class="customer-print-page">
+    <main class="page-shell">
+      <header class="brand-header">
+        <div class="brand-identity">
+          <div class="logo-lockup" aria-label="SHANHAI HUB logo area">
+            <div class="logo-symbol">
+              <img id="logoImage" class="logo-image" alt="SHANHAI HUB logo" hidden />
+              <span class="logo-route"></span>
+              <strong id="logoInitials">SH</strong>
+            </div>
+            <div class="logo-text">
+              <strong id="logoName">SHANHAI HUB</strong>
+              <span id="logoTagline">Auto Export China</span>
+            </div>
+          </div>
+
+          <div class="brand-copy-block">
+            <p class="eyebrow" data-i18n="eyebrow">中国汽车出口报价</p>
+            <h1>SHANHAI HUB</h1>
+            <p class="brand-subtitle" data-i18n="subtitle">您在中国的采购与出口执行团队</p>
+          </div>
+        </div>
+
+        <div class="header-card">
+          <div class="language-switcher" aria-label="Language">
+            <button type="button" class="language-button active" data-lang="zh">中文</button>
+            <button type="button" class="language-button" data-lang="ru">RU</button>
+            <button type="button" class="language-button" data-lang="en">EN</button>
+          </div>
+          <span data-i18n="systemLabel">报价系统</span>
+          <strong data-i18n="systemTitle">中国汽车采购与出口报价系统</strong>
+          <p data-i18n="systemText">用于客户车辆采购、出口执行、物流与交付的专业报价。</p>
+          <div class="quote-actions">
+            <button type="button" class="action-button" id="printQuote" data-i18n="printQuoteLabel">打印 / 导出 PDF</button>
+          </div>
+        </div>
+      </header>
+
+      <section class="workspace" aria-label="Vehicle quotation">
+        <form class="calculator-panel" id="quoteForm">
+          <div class="section-title">
+            <span>01</span>
+            <div>
+              <h2 data-i18n="vehicleSectionTitle">车辆信息</h2>
+              <p data-i18n="vehicleSectionHelp">用于客户报价单的车辆基础信息。</p>
+            </div>
+          </div>
+
+          <div class="vehicle-type-toggle">
+            <span data-i18n="vehicleQuoteTypeLabel">报价类型</span>
+            <input id="vehicleQuoteType" type="hidden" value="new" />
+            <div>
+              <button type="button" class="vehicle-type-button active" data-vehicle-type="new" data-i18n="newVehicleQuoteLabel">新车报价</button>
+              <button type="button" class="vehicle-type-button" data-vehicle-type="used" data-i18n="usedVehicleQuoteLabel">二手车报价</button>
+            </div>
+          </div>
+
+          <div class="form-grid">
+            <label>
+              <span data-i18n="vehicleNameLabel">车辆名称</span>
+              <input id="modelZh" type="text" value="理想 L7" autocomplete="off" />
+            </label>
+
+            <label>
+              <span data-i18n="trimLabel">配置版本</span>
+              <input id="trim" type="text" value="Max" autocomplete="off" />
+            </label>
+
+            <label>
+              <span data-i18n="yearLabel">年份</span>
+              <input id="year" type="number" value="2024" min="1990" max="2035" />
+            </label>
+
+            <label>
+              <span data-i18n="mileageLabel">里程 km</span>
+              <input id="mileage" type="number" value="12000" min="0" step="100" />
+            </label>
+
+            <label>
+              <span data-i18n="colorLabel">颜色</span>
+              <input id="color" type="text" value="黑色 / Black / Черный" autocomplete="off" />
+            </label>
+
+            <label>
+              <span data-i18n="engineLabel">发动机</span>
+              <input id="engine" type="text" value="1.5L" autocomplete="off" />
+            </label>
+
+            <label>
+              <span data-i18n="transmissionLabel">变速箱</span>
+              <input id="transmission" type="text" value="CVT" autocomplete="off" />
+            </label>
+
+            <label>
+              <span data-i18n="horsepowerLabel">马力</span>
+              <input id="horsepower" type="text" value="154 hp" autocomplete="off" />
+            </label>
+
+            <label>
+              <span data-i18n="statusLabel">车辆状态</span>
+              <select id="status"></select>
+            </label>
+
+            <label>
+              <span data-i18n="destinationLabel">交付城市</span>
+              <input id="destination" list="destinationOptions" value="莫斯科 / Москва" autocomplete="off" />
+              <datalist id="destinationOptions"></datalist>
+            </label>
+
+            <label>
+              <span data-i18n="emissionStandardLabel">环保标准</span>
+              <input id="emissionStandard" type="text" value="China 5" autocomplete="off" />
+            </label>
+
+            <label>
+              <span data-i18n="fuelTypeLabel">燃油类型</span>
+              <input id="fuelType" type="text" value="增程混动 / Range extender hybrid" list="fuelTypeOptions" autocomplete="off" />
+              <datalist id="fuelTypeOptions">
+                <option value="汽油 / Petrol"></option>
+                <option value="柴油 / Diesel"></option>
+                <option value="混动 / Hybrid"></option>
+                <option value="插电混动 / Plug-in hybrid"></option>
+                <option value="增程混动 / Range extender hybrid"></option>
+                <option value="纯电 / EV"></option>
+              </datalist>
+            </label>
+          </div>
+
+          <div class="vehicle-condition-field used-vehicle-only">
+            <div>
+              <strong data-i18n="conditionDescriptionLabel">车况描述</strong>
+              <span data-i18n="conditionDescriptionHelp">用于二手车客户报价中的车况说明。</span>
+            </div>
+            <label class="condition-grade-select">
+              <span data-i18n="conditionGradeLabel">车况等级</span>
+              <select id="conditionGrade"></select>
+            </label>
+            <textarea id="conditionDescription" rows="3" data-i18n-placeholder="conditionDescriptionPlaceholder" placeholder="二手车可填写：外观、内饰、事故/补漆、保养记录、检测结论等。" autocomplete="off"></textarea>
+          </div>
+
+          <div class="auto-model-fields" id="manualModelFallback" hidden>
+            <label>
+              <span data-i18n="modelLabel">英文车型名</span>
+              <input id="model" type="text" value="Li Auto L7" autocomplete="off" />
+            </label>
+            <label>
+              <span data-i18n="modelRuLabel">俄文车型名</span>
+              <input id="modelRu" type="text" value="Li Auto L7" autocomplete="off" />
+            </label>
+          </div>
+
+          <div class="section-title">
+            <span>02</span>
+            <div>
+              <h2 data-i18n="imageSectionTitle">车辆图片</h2>
+              <p data-i18n="imageSectionHelp">可粘贴图片链接，或上传本地图片预览。</p>
+            </div>
+          </div>
+
+          <div class="image-editor">
+            <label>
+              <span data-i18n="sourcePageLabel">图片来源网页 URL</span>
+              <input id="sourcePageUrl" type="url" placeholder="https://example.com/vehicle-page" autocomplete="off" />
+            </label>
+
+            <div class="image-input-grid">
+              <label>
+                <span data-i18n="mainImageUrlLabel">主图 URL</span>
+                <input class="vehicle-image-url" data-image-index="0" type="url" placeholder="./vehicle-main.jpg" autocomplete="off" />
+              </label>
+              <label>
+                <span data-i18n="imageUploadLabel">本地上传</span>
+                <input class="vehicle-image-file" data-image-index="0" type="file" accept="image/*" />
+              </label>
+              <label>
+                <span data-i18n="thumbnailUrlLabel">缩略图 1 URL</span>
+                <input class="vehicle-image-url" data-image-index="1" type="url" placeholder="./vehicle-1.jpg" autocomplete="off" />
+              </label>
+              <label>
+                <span data-i18n="imageUploadLabel">本地上传</span>
+                <input class="vehicle-image-file" data-image-index="1" type="file" accept="image/*" />
+              </label>
+              <label>
+                <span data-i18n="thumbnailUrlLabel">缩略图 2 URL</span>
+                <input class="vehicle-image-url" data-image-index="2" type="url" placeholder="./vehicle-2.jpg" autocomplete="off" />
+              </label>
+              <label>
+                <span data-i18n="imageUploadLabel">本地上传</span>
+                <input class="vehicle-image-file" data-image-index="2" type="file" accept="image/*" />
+              </label>
+              <label>
+                <span data-i18n="thumbnailUrlLabel">缩略图 3 URL</span>
+                <input class="vehicle-image-url" data-image-index="3" type="url" placeholder="./vehicle-3.jpg" autocomplete="off" />
+              </label>
+              <label>
+                <span data-i18n="imageUploadLabel">本地上传</span>
+                <input class="vehicle-image-file" data-image-index="3" type="file" accept="image/*" />
+              </label>
+              <label>
+                <span data-i18n="thumbnailUrlLabel">缩略图 4 URL</span>
+                <input class="vehicle-image-url" data-image-index="4" type="url" placeholder="./vehicle-4.jpg" autocomplete="off" />
+              </label>
+              <label>
+                <span data-i18n="imageUploadLabel">本地上传</span>
+                <input class="vehicle-image-file" data-image-index="4" type="file" accept="image/*" />
+              </label>
+            </div>
+          </div>
+
+          <div class="section-title">
+            <span>03</span>
+            <div>
+              <h2 data-i18n="costSectionTitle">报价成本</h2>
+              <p data-i18n="costSectionHelp">选择城市后自动带入参考费用，所有金额均可手动调整。</p>
+            </div>
+          </div>
+
+          <div class="form-grid">
+            <label>
+              <span data-i18n="carPriceLabel">车辆价格</span>
+              <input id="carPriceUsd" type="number" value="" min="0" step="100" />
+            </label>
+
+            <label>
+              <span data-i18n="freightLabel">国际物流费用</span>
+              <input id="freightUsd" type="number" value="" min="0" step="50" />
+            </label>
+
+            <label>
+              <span data-i18n="chinaLogisticsLabel">国内物流费用</span>
+              <input id="chinaLogisticsUsd" type="number" value="" min="0" step="50" />
+            </label>
+
+            <label>
+              <span data-i18n="exportProcessingLabel">出口手续费</span>
+              <input id="exportProcessingUsd" type="number" value="" min="0" step="50" />
+            </label>
+
+            <label>
+              <span data-i18n="clearanceLabel">清关服务费</span>
+              <input id="clearanceRub" type="number" value="" min="0" step="1000" />
+            </label>
+
+            <label>
+              <span data-i18n="taxLabel">税费</span>
+              <input id="taxRub" type="number" value="" min="0" step="1000" />
+            </label>
+
+            <label class="toggle-field">
+              <input id="includeTaxInTotal" type="checkbox" />
+              <input id="quoteTerm" type="hidden" value="cip" />
+              <input id="quoteCostCurrency" type="hidden" value="CNY" />
+              <span data-i18n="includeTaxInTotalLabel">总价包含关税/税费</span>
+            </label>
+
+            <label>
+              <span data-i18n="taxModeLabel">税费模式</span>
+              <select id="taxMode">
+                <option value="manual" data-i18n="taxModeManual">手动输入</option>
+                <option value="ruPersonalUse" data-i18n="taxModePersonal">俄罗斯个人购买（personal use）</option>
+              </select>
+            </label>
+
+            <label>
+              <span data-i18n="vehicleAgeLabel">车辆年限</span>
+              <input id="vehicleAgeYears" type="number" value="2" min="0" step="0.1" />
+            </label>
+
+            <label>
+              <span data-i18n="engineDisplacementLabel">发动机排量 cc</span>
+              <input id="engineDisplacementCc" type="number" value="1500" min="0" step="100" />
+            </label>
+
+            <label>
+              <span data-i18n="personalUseLabel">个人购买</span>
+              <select id="personalUse">
+                <option value="yes">Yes / Да / 是</option>
+                <option value="no">No / Нет / 否</option>
+              </select>
+            </label>
+
+            <label>
+              <span data-i18n="profitLabel">服务费用</span>
+              <input id="profitUsd" type="number" value="" min="0" step="50" />
+            </label>
+
+            <label>
+              <span data-i18n="exchangeRateLabel">汇率（默认实时，可手工修改）</span>
+              <input id="exchangeRate" type="number" value="10.3326" min="0.0001" step="0.0001" />
+            </label>
+
+            <label>
+              <span data-i18n="usdCnyRateLabel">人民币兑美元</span>
+              <input id="exchangeRateCny" type="number" value="0.138122" min="0.000001" step="0.000001" />
+            </label>
+
+            <label>
+              <span data-i18n="customsDutyLabel">Customs duty RUB</span>
+              <input id="customsDutyRub" type="text" value="0" readonly />
+            </label>
+
+            <label>
+              <span data-i18n="recyclingFeeLabel">Utilization fee RUB</span>
+              <input id="recyclingFeeRub" type="text" value="0" readonly />
+            </label>
+
+            <label>
+              <span data-i18n="estimatedTaxTotalLabel">Estimated tax total RUB</span>
+              <input id="estimatedTaxTotalRub" type="text" value="0" readonly />
+            </label>
+
+            <label>
+              <span data-i18n="finalLandedCostLabel">Final landed cost RUB</span>
+              <input id="finalLandedCostRub" type="text" value="0" readonly />
+            </label>
+          </div>
+        </form>
+
+        <aside class="quote-card" aria-label="Customer quote preview">
+          <div class="quote-letterhead">
+            <div class="mini-logo">
+              <span id="miniLogoText">SH</span>
+            </div>
+            <div>
+              <strong>SHANHAI HUB</strong>
+              <span data-i18n="quoteCardTitle">客户车辆报价</span>
+            </div>
+          </div>
+
+          <div class="quote-meta">
+            <div>
+              <span data-i18n="quoteRefLabel">报价编号</span>
+              <strong id="quoteNumber">SHH-QT-000000-001</strong>
+            </div>
+            <div>
+              <span data-i18n="dateLabel">日期</span>
+              <strong id="quoteDate">--</strong>
+            </div>
+          </div>
+
+          <section class="client-readiness-bar" aria-label="Commercial quotation scope">
+            <div>
+              <span data-i18n="quoteForLabel">适用客户</span>
+              <strong data-i18n="privateCorporateLabel">个人 / 企业客户</strong>
+            </div>
+            <div>
+              <span data-i18n="quoteTermScopeLabel">贸易条款</span>
+              <strong data-i18n="quoteTermScopeText">FOB / CIP / DDP</strong>
+            </div>
+            <div>
+              <span data-i18n="validityShortLabel">有效期</span>
+              <strong data-i18n="validityShortText">24 小时</strong>
+            </div>
+          </section>
+
+          <div class="vehicle-summary">
+            <span class="summary-label" data-i18n="singleVehicleTitle">单车详情卡</span>
+            <span class="quote-type-badge" id="previewVehicleQuoteType">新车报价</span>
+            <h2 id="previewModelZh">理想 L7 Max</h2>
+            <p id="previewModelRu">Lixiang L7 Max</p>
+            <strong id="previewTrim">Max</strong>
+            <p id="previewDestination">交付城市: Moscow</p>
+          </div>
+
+          <section class="spec-card">
+            <div class="spec-grid">
+              <div><span data-i18n="modelLabel">车型</span><strong id="specModel">理想 L7 Max</strong></div>
+              <div><span data-i18n="yearLabel">年份</span><strong id="specYear">2024</strong></div>
+              <div><span data-i18n="mileageLabel">里程 km</span><strong id="specMileage">12,000 km</strong></div>
+              <div><span data-i18n="engineLabel">发动机</span><strong id="specEngine">1.5L</strong></div>
+              <div><span data-i18n="transmissionLabel">变速箱</span><strong id="specTransmission">CVT</strong></div>
+              <div><span data-i18n="colorLabel">颜色</span><strong id="specColor">Black</strong></div>
+              <div><span data-i18n="horsepowerLabel">马力</span><strong id="specHorsepower">154 hp</strong></div>
+              <div><span data-i18n="statusLabel">车辆状态</span><strong id="specStatus">Available</strong></div>
+              <div><span data-i18n="emissionStandardLabel">环保标准</span><strong id="specEmissionStandard">China 5</strong></div>
+              <div><span data-i18n="fuelTypeLabel">燃油类型</span><strong id="specFuelType">增程混动</strong></div>
+            </div>
+          </section>
+
+          <div class="vehicle-image-card">
+            <div class="main-vehicle-image" id="mainVehicleImage">
+              <img id="mainVehicleImageImg" alt="Vehicle preview" hidden />
+              <div class="image-placeholder" id="imagePlaceholder">
+                <strong>SHANHAI HUB</strong>
+                <span data-i18n="imagePlaceholderText">暂无车辆图片</span>
+              </div>
+            </div>
+            <div class="quote-image-grid" id="quoteImageGrid" aria-label="Vehicle image gallery"></div>
+            <div class="thumbnail-strip" id="thumbnailStrip" aria-label="Vehicle images"></div>
+          </div>
+
+          <section class="selling-points">
+            <strong data-i18n="sellingPointsTitle">核心卖点</strong>
+            <p id="sellingPointsText">车况清晰，配置完整，适合出口交付。报价包含采购、物流、清关和服务执行。</p>
+          </section>
+
+          <section class="condition-summary used-vehicle-only">
+            <strong data-i18n="conditionDescriptionTitle">车况描述</strong>
+            <div class="condition-grade-preview" id="conditionGradePreview" hidden>
+              <span id="conditionGradeBadge">A</span>
+              <div>
+                <b id="conditionGradeTitle">-</b>
+                <em id="conditionGradeText">-</em>
+              </div>
+            </div>
+            <p id="conditionDescriptionPreview">-</p>
+          </section>
+
+          <section class="price-block cip-price-block">
+            <div class="total-box">
+              <span id="primaryPriceLabel" data-i18n="cipPriceLabel">CIP 到达价</span>
+              <input id="displayCurrency" type="hidden" value="CNY" />
+              <strong id="totalRub">0 RUB</strong>
+              <em id="totalUsdHero" hidden></em>
+            </div>
+
+            <strong class="price-block-title" id="primaryDetailsHeading" data-i18n="cipDetailsTitle">CIP 到达价明细</strong>
+            <div class="price-card-grid">
+              <div><span data-i18n="carPriceLabel">车辆价格 USD</span><strong id="priceCar">0 USD</strong></div>
+              <div><span data-i18n="chinaLogisticsLabel">国内物流费用</span><strong id="priceChinaLogistics">0</strong></div>
+              <div><span data-i18n="exportProcessingLabel">出口手续费</span><strong id="priceExportProcessing">0</strong></div>
+              <div class="freight-cost-row"><span data-i18n="freightLabel">国际物流费用 USD</span><strong id="priceFreight">0 USD</strong></div>
+              <div><span data-i18n="clientProfitLabel">采购与出口服务 USD</span><strong id="priceProfit">0 USD</strong></div>
+              <div class="rate-detail-row"><span data-i18n="rateLabel">汇率</span><strong id="ratePreview">CNY-RUB / CNY-USD</strong><small id="rateMetaPreview" class="rate-meta-preview">手工汇率</small></div>
+              <div class="internal-summary-row"><span data-i18n="usdCostsLabel">USD 成本</span><strong id="usdSubtotal">0 USD</strong></div>
+              <div class="cip-support-row internal-summary-row"><span data-i18n="rubCostsLabel">RUB 成本</span><strong id="rubSubtotal">0 RUB</strong></div>
+              <div class="cip-support-row highlight"><span data-i18n="cipPriceLabel">CIP 到达价</span><strong id="priceCipTotal">0 RUB</strong></div>
+              <div class="cip-support-row highlight"><span id="selectedTotalLabel" data-i18n="selectedTotalLabel">总价</span><strong id="totalUsd">0 USD</strong></div>
+            </div>
+          </section>
+
+          <section class="price-block landed-price-block">
+            <div class="total-box landed-total-content">
+              <span data-i18n="landedPriceLabel">全包落地价</span>
+              <strong id="landedTotalMain">0</strong>
+              <em id="landedTotalSub" hidden></em>
+            </div>
+
+            <strong class="price-block-title" id="landedDetailsHeading" data-i18n="landedDetailsTitle">全包落地价明细</strong>
+            <div class="price-card-grid">
+              <div class="landed-only-row"><span data-i18n="carPriceLabel">车辆价格 USD</span><strong id="landedPriceCar">0 USD</strong></div>
+              <div class="landed-only-row"><span data-i18n="chinaLogisticsLabel">国内物流费用</span><strong id="landedPriceChinaLogistics">0</strong></div>
+              <div class="landed-only-row"><span data-i18n="exportProcessingLabel">出口手续费</span><strong id="landedPriceExportProcessing">0</strong></div>
+              <div class="landed-only-row"><span data-i18n="freightLabel">国际物流费用 USD</span><strong id="landedPriceFreight">0 USD</strong></div>
+              <div class="landed-only-row"><span data-i18n="clientProfitLabel">采购与出口服务 USD</span><strong id="landedPriceProfit">0 USD</strong></div>
+              <div class="tax-estimate-row"><span data-i18n="clearanceLabel">清关服务费 RUB</span><strong id="priceClearance">0 RUB</strong></div>
+              <div class="landed-only-row"><span data-i18n="customsDutyLabel">进口关税 RUB</span><strong id="priceCustomsDuty">0 RUB</strong></div>
+              <div class="landed-only-row"><span data-i18n="recyclingFeeLabel">回收费 RUB</span><strong id="priceRecyclingFee">0 RUB</strong></div>
+              <div class="landed-only-row"><span data-i18n="taxLabel">税费 RUB</span><strong id="priceTax">0 RUB</strong></div>
+              <div class="tax-estimate-row highlight"><span data-i18n="estimatedTaxTotalLabel">预估税费合计 RUB</span><strong id="priceEstimatedTaxTotal">0 RUB</strong></div>
+              <div class="landed-only-row highlight"><span data-i18n="landedPriceLabel">全包落地价</span><strong id="priceGrandTotal">0 RUB</strong></div>
+              <div class="landed-only-row highlight"><span data-i18n="finalLandedCostLabel">最终落地成本 RUB</span><strong id="priceFinalLandedCost">0 RUB</strong></div>
+            </div>
+          </section>
+
+          <section class="service-scope">
+            <div class="section-kicker">
+              <strong data-i18n="serviceScopeTitle">服务范围</strong>
+              <span data-i18n="serviceScopeSubtitle">为个人和企业客户清晰呈现采购与出口执行边界。</span>
+            </div>
+            <div class="scope-grid">
+              <div>
+                <b>01</b>
+                <strong data-i18n="scopeSourcingTitle">车辆确认</strong>
+                <span data-i18n="scopeSourcingText">车型、配置、图片和车况信息确认</span>
+              </div>
+              <div>
+                <b>02</b>
+                <strong data-i18n="scopeExportTitle">出口文件</strong>
+                <span data-i18n="scopeExportText">中国采购、出口手续与交付资料协调</span>
+              </div>
+              <div>
+                <b>03</b>
+                <strong data-i18n="scopeLogisticsTitle">国际物流</strong>
+                <span data-i18n="scopeLogisticsText">按报价条款安排至指定城市的运输方案</span>
+              </div>
+              <div>
+                <b>04</b>
+                <strong data-i18n="scopeClearanceTitle">清关估算</strong>
+                <span data-i18n="scopeClearanceText">按客户类型和目的地提供税费参考</span>
+              </div>
+            </div>
+          </section>
+
+          <div class="quote-note">
+            <strong data-i18n="noteTitle">报价说明</strong>
+            <p id="noteText">报价为预估金额，最终价格以车辆确认、汇率、运输路线及清关要求为准。</p>
+            <p id="cipTaxNotice" class="cip-tax-notice">温馨提示：当前为 CIP 到达价，关税、清关及落地费用为预估，最终以实际清关结果为准。</p>
+            <p id="validityText">报价有效期：24小时，最终价格以车辆确认、汇率、运输路线及清关条件为准。</p>
+          </div>
+
+          <footer class="quote-footer">
+            <span>SHANHAI HUB</span>
+            <strong data-i18n="footerText">中国汽车采购与出口执行</strong>
+          </footer>
+        </aside>
+      </section>
+    </main>
+
+    <script src="quote-math.js?v=20260604-noapprox1"></script>
+    <script src="app.js?v=20260604-noapprox1"></script>
+  </body>
+</html>
+
+
+
+
+
